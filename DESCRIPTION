@@ -22,4 +22,15 @@ Imports:
     bizdays (>= 1.0.13),
     RQuantLib (>= 0.4.20),
     purrr (>= 1.0.2),
-    lifecycle
+    lifecycle,
+    uuid,
+    ggplot2,
+    shiny,
+    plotly,
+    purrr,
+    htmltools,
+    htmlwidgets,
+    stringr,
+    lazyeval,
+    scales,
+    DT
