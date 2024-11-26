@@ -19,15 +19,24 @@
 #'
 #' @import DT
 #' @importFrom DT datatable formatPercentage formatStyle
-#' @importFrom JS JS
+#' @importFrom htmlwidgets JS
 #'
 #' @examples
 #' # Example data frame for returns visualization
 #' returns_df <- data.frame(
-#'   Instrument = c("Fund A", "Fund B"),
+#'   Year = c(2024, 2023),
 #'   Jan = c(0.05, 0.04),
 #'   Feb = c(0.02, 0.03),
-#'   Mar = c(-0.01, 0.00),
+#'   Mar = c(0.02, 0.03),
+#'   Apr = c(-0.01, 0.00),
+#'   May = c(-0.2, 0.00),
+#'   Jun = c(-0.01, 0.00),
+#'   Jul = c(-0.01, 0.00),
+#'   Aug = c(-0.01, 0.01),
+#'   Sep = c(-0.01, 0.00),
+#'   Oct = c(-0.01, 0.00),
+#'   Nov = c(-0.01, 0.00),
+#'   Dec = c(-0.01, 0.00),
 #'   YTD = c(0.06, 0.07)
 #' )
 #' CalendarReturnsTable(returns_df)
