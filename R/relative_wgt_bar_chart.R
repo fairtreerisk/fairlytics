@@ -28,7 +28,8 @@
 #' @import dplyr
 #' @import ggplot2
 #' @importFrom scales percent
-#' @importFrom plotly ggploty
+#' @importFrom plotly ggplotly
+#' @importFrom stats reorder
 #'
 #' @examples
 #' # Example data
