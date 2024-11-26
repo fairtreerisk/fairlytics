@@ -1,6 +1,6 @@
 Package: fairlytics
 Title: The package provides a collection of essential functions for performing data cleaning and processing
-Version: 0.0.0.9000
+Version: 1.1.2.0
 Authors@R: 
     person("Menzi", "Njakazi", , "menzin@fairtree.com", role = c("aut", "cre"))
 Description: The fairtreeR package provides a collection of essential functions developed and used by the team.
@@ -33,4 +33,5 @@ Imports:
     stringr,
     lazyeval,
     scales,
-    DT
+    DT,
+    kableExtra
