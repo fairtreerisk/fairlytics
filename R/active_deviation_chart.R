@@ -19,6 +19,7 @@
 #' @import ggplot2
 #' @importFrom plotly ggplotly
 #' @importFrom scales percent
+#' @importFrom stats reorder
 #'
 #' @examples
 #' # Example data
@@ -26,7 +27,9 @@
 #'   instrument = c("Instrument A", "Instrument B", "Instrument C"),
 #'   active_weight = c(0.002, -0.001, 0.0003)
 #' )
-#' ActiveWeightsDeviationChart(test_df, instrument_col = "instrument", active_weight_col = "active_weight")
+#' ActiveWeightsDeviationChart(test_df,
+#' instrument_col = "instrument",
+#' active_weight_col = "active_weight")
 ActiveWeightsDeviationChart <- function(df,instrument_col,active_weight_col,
                                         min_band = -0.0005, max_band = 0.0005){
 
