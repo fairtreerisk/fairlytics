@@ -7,6 +7,7 @@
 #'
 #' @param df A data frame containing the data to be displayed in the panel.
 #' @param value_col (string) The column in `df` that contains the values to be displayed in the chart.
+#' @param grouping_col (string) The column that will be used to group the data fer each panel.
 #' @param chart_title (string) An optional title for the chart, displayed at the top of the panel.
 #' @param color (hex or string) A color value (in hex format, default is "#FF8200") to define the bar chart's fill color.
 #'
@@ -23,8 +24,18 @@
 #' @importFrom magrittr %>%
 #'
 #' @examples
-#' AccordionPanel(mydata, "amount", "group_value", "Collapsible Panel Testing")
-AccordionPanel <- function(df, value_col, grouping_col, chart_title=NULL, color="#FF8200") {
+#' library(shiny)
+#'
+#' # Example data
+#' mydata <- data.frame(
+#'   group_value = rep(c("Group A", "Group B", "Group C"), each = 3),
+#'   category = rep(c("Category 1", "Category 2", "Category 3"), times = 3),
+#'   amount = c(10, 20, 15, 25, 35, 30, 40, 50, 45)
+#' )
+#'  AccordionPanel(mydata, value_col = "amount", grouping_col = "group_value",
+#'  chart_title = "Collapsible Bar Charts")
+AccordionPanel <- function(df, value_col, grouping_col,
+                           chart_title=NULL, color="#FF8200") {
 
   .inputColumnChecker(df, value_col, grouping_col)
 
