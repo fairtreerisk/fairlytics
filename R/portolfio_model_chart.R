@@ -23,8 +23,8 @@
 #' @examples
 #' # Example usage:
 #' test_df <- data.frame(
-#'   account_code = c('abc', 'xyz', 'test0001')
-#'   account_code = c('Equities', 'Bonds', 'Commodities')
+#'   account_code = c('abc', 'xyz', 'test0001'),
+#'   asset_class = c('Equities', 'Bonds', 'Commodities'),
 #'   mkt_value = c(300, 200, 100),
 #'   port_wgt = c(0.5, 0.3, 0.2),
 #'   model_wgt = c(0.4, 0.4, 0.2),
