@@ -3,7 +3,7 @@ Title: The package provides a collection of essential functions for performing d
 Version: 1.1.2.0
 Authors@R: 
     person("Menzi", "Njakazi", , "menzin@fairtree.com", role = c("aut", "cre"))
-Description: The fairtreeR package provides a collection of essential functions developed and used by the team.
+Description: The `fairlytics` package provides a collection of essential functions developed and used by the team.
   The package includes a variety of functions for data cleaning, manipulation, visualization and data analysis, 
 License: MIT + file LICENSE
 Encoding: UTF-8
