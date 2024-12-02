@@ -1,9 +1,9 @@
 Package: fairlytics
 Title: The package provides a collection of essential functions for performing data cleaning and processing
-Version: 0.0.0.9000
+Version: 1.1.2.0
 Authors@R: 
     person("Menzi", "Njakazi", , "menzin@fairtree.com", role = c("aut", "cre"))
-Description: The fairtreeR package provides a collection of essential functions developed and used by the team.
+Description: The `fairlytics` package provides a collection of essential functions developed and used by the team.
   The package includes a variety of functions for data cleaning, manipulation, visualization and data analysis, 
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -22,4 +22,16 @@ Imports:
     bizdays (>= 1.0.13),
     RQuantLib (>= 0.4.20),
     purrr (>= 1.0.2),
-    lifecycle
+    lifecycle,
+    uuid,
+    ggplot2,
+    shiny,
+    plotly,
+    purrr,
+    htmltools,
+    htmlwidgets,
+    stringr,
+    lazyeval,
+    scales,
+    DT,
+    kableExtra
