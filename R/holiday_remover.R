@@ -24,17 +24,21 @@
 #' @importFrom magrittr %>%
 #'
 #' @examples
-#' # Removing weekends and South African holidays from a dataset
-#' holidayRemover(data = data_df, calendar_name = "SouthAfrica")
-HolidayRemover <- function(data, calendar_name="SouthAfrica") {
+#' # Example dataset
+#' data_df <- data.frame(
+#'   Date = seq(as.Date("2024-01-01"), as.Date("2024-01-10"), by = "day"),
+#'   Value = rnorm(10)
+#' )
+#'
+#' # Removing weekends and South African holidays from the dataset
+#' cleaned_data <- HolidayRemover(data = data_df, "Date", calendar_name = "SouthAfrica")
+#' print(cleaned_data)
+HolidayRemover <- function(data, date_col, calendar_name="SouthAfrica") {
 
-  # check if the date column is in the data set
-  if (str_detect(colnames(data), "Date|date")) {
-    stop("The data must include a Date column")
-  }
+  .inputColumnChecker(df = data, date_col)
 
-  min_date <- min(data$Date)
-  max_date <- max(data$Date)
+  min_date <- min(data[[date_col]])
+  max_date <- max(data[[date_col]])
 
   bizdays::load_quantlib_calendars(ql_calendars = calendar_name,
                                    from = min_date,
@@ -47,10 +51,10 @@ HolidayRemover <- function(data, calendar_name="SouthAfrica") {
                            end.date = max_date,
                            weekdays = c("saturday", "sunday"))
 
-  biz_days_df <- tibble(Date = bizdays::bizseq(min_date,max_date, "MyCalendar")) %>%
-    mutate(is_bizday = map_lgl(Date, ~ bizdays::is.bizday(.x, cal = gen_calendar))) %>%
+  biz_days_df <- tibble(Date = bizseq(min_date,max_date, "MyCalendar")) %>%
+    mutate('is_bizday' = map_lgl(.data[[date_col]], ~ is.bizday(.x, cal = gen_calendar))) %>%
     filter(is_bizday == T) %>%
-    select(-is_bizday)
+    select(-'is_bizday')
 
   out <- left_join(biz_days_df, data, by = "Date")
 
