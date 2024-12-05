@@ -7,9 +7,13 @@
 #' into components such as portfolio, benchmark, and differences. Users can choose whether to include
 #' benchmark information in the output.
 #'
-#' @param RawHoldingsData A data frame containing raw holdings data. It should include columns named `name` and `header_report_universes`.
-#' @param includeBenchmarks A boolean flag indicating whether to include benchmark information in the output.
-#' Default is `TRUE`. If set to `FALSE`, the benchmark column will be excluded from the resulting data frame.
+#' @param raw_holdings_data A data frame containing the raw holdings data.
+#' It must include the columns specified by `report_col` and `universe_info_col`.
+#' @param report_col A string specifying the name of the column that contains fund or report names.
+#' @param universe_info_col A string specifying the name of the column containing detailed fund descriptions
+#' (e.g., portfolio, benchmark, and differences).
+#' @param include_benchmarks A boolean flag indicating whether to include benchmark information in the output.
+#' Default is `TRUE`. If set to `FALSE`, the benchmark column will be excluded from the result.
 #'
 #' @return A data frame with the following columns:
 #' - `report_name`: The name of the fund or report.
@@ -23,25 +27,24 @@
 #' @import stringr
 #'
 #' @importFrom magrittr %>%
+#' @importFrom tidyr separate
 #'
-#' @examples
-#' # Extracting fund information with benchmarks included
-#' ExtractFunds(RawHoldingsData)
-#'
-#' # Extracting fund information without benchmarks
-#' ExtractFunds(RawHoldingsData, includeBenchmarks = FALSE)
-ExtractFunds <- function(RawHoldingsData,includeBenchmarks = T){
-  df <- RawHoldingsData %>%
-    distinct(report_name = name, description = header_report_universes) %>%
-    separate(description,
-             sep = "\\(1\\) |\\(2\\) |\\(3\\) ",
-             into = c("dropme", "port", "bench", "diff"),
-             extra = "warn") %>%
-    select(report_name,port,bench,diff)
+ExtractFunds <- function(raw_holdings_data,report_col, universe_info_col, include_benchmarks = T){
+  df <- raw_holdings_data %>%
+    distinct(!!sym(report_col) := .data[[report_col]],
+             !!sym(universe_info_col) := .data[[universe_info_col]]) %>%
+    separate(
+      !!sym(universe_info_col),
+      sep = "\\(1\\) |\\(2\\) |\\(3\\) ",
+      into = c("dropme", "port", "bench", "diff"),
+      extra = "warn",
+      fill = "right"
+    ) %>%
+    select("report_name" = !!sym(report_col), 'port', 'bench', 'diff')
 
-  if (includeBenchmarks == F) {
+  if (include_benchmarks == F) {
 
-    df <- df %>% select(-bench)
+    df <- df %>% select(-'bench')
   }
 
   return(df)
