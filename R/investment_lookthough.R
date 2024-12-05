@@ -62,6 +62,8 @@ InvestmentLookThrough <- function(fund_holdings,
                                   tickers_col,
                                   wgt_col){
 
+  .inputColumnChecker(fund_holdings, pos_value_col, tickers_col, wgt_col)
+
   holding_AUM <- sum(fund_holdings[[pos_value_col]], na.rm = T)
 
   allocation_wgt <- fund_holdings %>%
