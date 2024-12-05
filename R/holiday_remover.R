@@ -8,6 +8,8 @@
 #'
 #' @param data A data frame containing a `Date` column.
 #' This column is required and must represent the dates to evaluate.
+#' @param date_col A string specifying the name of the column in `data` that contains the date values.
+#' The column should be of class `Date` or convertible to it.
 #' @param calendar_name A string specifying the name of the holiday calendar to use.
 #' The default is `"SouthAfrica"`.
 #' You can choose any valid calendar supported by the `bizdays` package.

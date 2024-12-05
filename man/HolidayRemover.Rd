@@ -10,6 +10,9 @@ HolidayRemover(data, date_col, calendar_name = "SouthAfrica")
 \item{data}{A data frame containing a \code{Date} column.
 This column is required and must represent the dates to evaluate.}
 
+\item{date_col}{A string specifying the name of the column in \code{data} that contains the date values.
+The column should be of class \code{Date} or convertible to it.}
+
 \item{calendar_name}{A string specifying the name of the holiday calendar to use.
 The default is \code{"SouthAfrica"}.
 You can choose any valid calendar supported by the \code{bizdays} package.}
