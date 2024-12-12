@@ -35,7 +35,7 @@ library(fairlytics)
 
 ```
 
-Explore the documentation to learn more about each function and its use cases. The fairlytics package is continuously updated to incorporate feedback and evolving team requirements.
+Explore the documentation to learn more about each function and its use cases. The `fairlytics` package is continuously updated to incorporate feedback and evolving team requirements.
 
 ### code Guide
 
