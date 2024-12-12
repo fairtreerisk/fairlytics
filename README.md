@@ -39,6 +39,6 @@ library(fairlytics)
 
 Explore the documentation to learn more about each function and its use cases. The `fairlytics` package is continuously updated to incorporate feedback and evolving team requirements.
 
-### code Guide
+### Code Guide
 
 When contributing to this project, please follow this code guide [here](inst/fairtree_R_code_guide.pdf)
