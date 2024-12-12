@@ -39,4 +39,4 @@ Explore the documentation to learn more about each function and its use cases. T
 
 ### code Guide
 
-when contributing to the project, please follow this code guide [here](inst/fairtree_R_code_guide.pdf)
+When contributing to this project, please follow this code guide [here](inst/fairtree_R_code_guide.pdf)
