@@ -1,6 +1,6 @@
 # fairlytics
 
-![PR Labeler](https://github.com/<menzy17>/<fairlytics>/actions/workflows/pr-labeler.yml/badge.svg)
+![PR Labeler](https://github.com/menzy17/fairlytics/actions/workflows/pr-labeler.yml/badge.svg)
 
 
 ### Overview
