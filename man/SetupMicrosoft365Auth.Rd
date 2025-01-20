@@ -10,7 +10,7 @@ SetupMicrosoft365Auth(
 )
 }
 \arguments{
-\item{tenant}{A string specifying the Azure AD tenant name or ID. Default is "fairtree.com".}
+\item{tenant}{A string specifying the Azure AD tenant name or ID.}
 
 \item{app_id}{A string specifying the client ID (application ID) of your registered Azure AD app.}
 }
@@ -19,7 +19,7 @@ A Microsoft 365 authentication token object.
 }
 \description{
 The \code{SetupMicrosoft365Auth} function initializes and creates an authentication token for interacting with Microsoft 365 products.
-This token is essential when using functionality such as accessing user information within Microsoft 365 and automating .
+This token is essential when using functionality such as accessing user information within Microsoft 365.
 
 \strong{Note:} When \code{SetupMicrosoft365Auth} is run for the first time, it prompts for authorization via the Authenticator app.
 }
