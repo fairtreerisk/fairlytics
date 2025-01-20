@@ -34,4 +34,11 @@ Imports:
     lazyeval,
     scales,
     DT,
-    kableExtra
+    kableExtra,
+    Microsoft365R,
+    lazyeval,
+    tidyr,
+    RDCOMClient,
+    AzureAuth,
+    AzureGraph,
+    highcharter

@@ -1,0 +1,9 @@
+# .github/labeler.yml
+documentation:
+  - "**/*.md"
+tests:
+  - "**/tests/**"
+R-scripts:
+  - "**/*.R"
+config:
+  - "**/*.yml"
