@@ -6,7 +6,7 @@
 \alias{fairlytics-package}
 \title{fairlytics: The package provides a collection of essential functions for performing data cleaning and processing}
 \description{
-The fairtreeR package provides a collection of essential functions developed and used by the team. The package includes a variety of functions for data cleaning, manipulation, visualization and data analysis,
+The `fairlytics` package provides a collection of essential functions developed and used by the team. The package includes a variety of functions for data cleaning, manipulation, visualization and data analysis,
 }
 \author{
 \strong{Maintainer}: Menzi Njakazi \email{menzin@fairtree.com}
