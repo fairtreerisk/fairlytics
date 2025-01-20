@@ -57,7 +57,7 @@ data <- data.frame(
   ColorGroup = rep(c("Red", "Blue"), each = 5),
   Group = rep(c("A", "B"), each = 5)
 )
-chart_ggplot2 <- LineChart(
+chart_ggplot2 <- LineChartWrapper(
   df = data,
   x_col = "Date",
   y_col = "Value",
@@ -68,7 +68,7 @@ chart_ggplot2 <- LineChart(
 )
 chart_ggplot2
 
-chart_highcharter <- LineChart(
+chart_highcharter <- LineChartWrapper(
   df = data,
   x_col = "Date",
   y_col = "Value",

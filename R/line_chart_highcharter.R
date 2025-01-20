@@ -7,8 +7,8 @@
 #' and other stylistic customizations.
 #'
 #' @param df A data frame containing the data to be visualized.
-#' @param x_label A string representing the column name in `df` to be used as the x-axis.
-#' @param y_label A string representing the column name in `df` to be used as the y-axis.
+#' @param x_col A string representing the column name in `df` to be used as the x-axis.
+#' @param y_col A string representing the column name in `df` to be used as the y-axis.
 #' @param color_col A string representing the column name in `df` to determine the color of the series (optional).
 #' @param group_col A string representing the column name in `df` used to group the data into series.
 #' @param chart_title A string for the title of the chart.
@@ -34,8 +34,8 @@
 #' )
 #' chart <- LineChartr(
 #'   df = data,
-#'   x_label = "Date",
-#'   y_label = "Value",
+#'   x_col = "Date",
+#'   y_col = "Value",
 #'   color_col = NULL,
 #'   group_col = "Group",
 #'   chart_title = "Sample Line Chart"

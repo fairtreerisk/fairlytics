@@ -9,15 +9,15 @@ LineChartr(df, x_col, y_col, color_col, group_col, chart_title)
 \arguments{
 \item{df}{A data frame containing the data to be visualized.}
 
+\item{x_col}{A string representing the column name in \code{df} to be used as the x-axis.}
+
+\item{y_col}{A string representing the column name in \code{df} to be used as the y-axis.}
+
 \item{color_col}{A string representing the column name in \code{df} to determine the color of the series (optional).}
 
 \item{group_col}{A string representing the column name in \code{df} used to group the data into series.}
 
 \item{chart_title}{A string for the title of the chart.}
-
-\item{x_label}{A string representing the column name in \code{df} to be used as the x-axis.}
-
-\item{y_label}{A string representing the column name in \code{df} to be used as the y-axis.}
 }
 \value{
 A \code{highchart} object representing the line chart.
@@ -48,8 +48,8 @@ data <- data.frame(
 )
 chart <- LineChartr(
   df = data,
-  x_label = "Date",
-  y_label = "Value",
+  x_col = "Date",
+  y_col = "Value",
   color_col = NULL,
   group_col = "Group",
   chart_title = "Sample Line Chart"
