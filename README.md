@@ -1,5 +1,8 @@
 # fairlytics
 
+![PR Labeler](https://github.com/<menzy17>/<fairlytics>/actions/workflows/pr-labeler.yml/badge.svg)
+
+
 ### Overview
 
 The `fairlytics` package is a comprehensive toolkit developed to streamline and enhance data workflows. Designed by our team for internal use, it offers a carefully curated collection of essential functions that cater to a wide range of tasks, including:
