@@ -1,4 +1,4 @@
-name: Label PRs based on file changes
+name: Label PRs based on files changed
 
 on:
   pull_request:
@@ -9,11 +9,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout the code
       uses: actions/checkout@v3
 
-    - name: Label PR based on changed files
-      uses: actions/labeler@v4
+    - name: Label PR based on changes
+      uses: actions/github-script@v6
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        configuration-path: .github/labeler.yml
+        script: |
+          const changedFiles = await github.paginate(
+            github.rest.pulls.listFiles,
+            {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+            }
+          );
+
+          const labels = new Set();
+
+          for (const file of changedFiles) {
+            if (file.filename.endsWith('.R')) {
+              labels.add('R-scripts');
+            } else if (file.filename.includes('tests/')) {
+              labels.add('tests');
+            } else if (file.filename.endsWith('.Rd') || file.filename.endsWith('.md')) {
+              labels.add('documentation');
+            }
+          }
+
+          if (labels.size > 0) {
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              labels: Array.from(labels),
+            });
+          }
