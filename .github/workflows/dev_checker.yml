@@ -1,8 +1,9 @@
 name: R Package Check
 
 on:
-  pull_request_target:
-    types: [opened, synchronize, reopened]
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -21,14 +22,22 @@ jobs:
         with:
           r-version: "4.3.1" # Specify the R version you want
 
-      - name: Set up authentication for private repos
-        env:
-          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install system dependencies
         run: |
-          echo "GITHUB_PAT=$GITHUB_PAT" >> $GITHUB_ENV
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
 
-      - name: Install dependencies
-        run: Rscript -e 'install.packages("devtools"); devtools::install_deps(dep = TRUE)'
+      - name: Install required R packages
+        run: |
+          Rscript -e 'install.packages(c("usethis", "pkgdown", "rcmdcheck", "rversions", "urlchecker"), repos = "https://cran.rstudio.com/")'
+
+      - name: Install devtools
+        run: |
+          Rscript -e 'install.packages("devtools", repos = "https://cran.rstudio.com/")'
+
+      - name: Install package dependencies
+        run: |
+          Rscript -e 'devtools::install_deps(dependencies = TRUE)'
 
       - name: Run devtools::check() and ensure no errors
         env:
