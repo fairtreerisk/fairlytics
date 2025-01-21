@@ -1,4 +1,4 @@
-name: Label PR based on changed files
+name: PR labeler
 
 on:
   pull_request_target:
