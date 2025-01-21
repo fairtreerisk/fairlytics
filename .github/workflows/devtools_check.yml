@@ -17,12 +17,17 @@ jobs:
       with:
         r-version: "4.3"
 
+    - name: Ensure CRAN is accessible
+      run: |
+        echo 'options(repos = c(CRAN = "https://cloud.r-project.org"))' >> ~/.Rprofile
+
     - name: Install devtools
       run: |
-        Rscript -e 'install.packages("devtools", repos = "https://cloud.r-project.org")'
+        Rscript -e 'install.packages("devtools")'
 
     - name: Install package dependencies
       run: |
+        Rscript -e 'if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")'
         Rscript -e 'remotes::install_deps(dependencies = TRUE)'
 
     - name: Run devtools::check
