@@ -31,6 +31,7 @@
 #'   ColorGroup = rep(c("Red", "Blue"), each = 5),
 #'   Group = rep(c("A", "B"), each = 5)
 #' )
+#'
 #' chart <- LineChart(
 #'   df = data,
 #'   x_col = "Date",
