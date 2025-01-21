@@ -1,47 +1,47 @@
-name: Label PRs based on files changed
+name: Label PR based on changed files
 
 on:
-  pull_request:
-    types: [opened, synchronize]
+  pull_request_target:
+    types: [opened, synchronize, reopened]
 
 jobs:
-  label-pr:
+  label:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
 
     steps:
-    - name: Checkout the code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Label PR based on changes
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const changedFiles = await github.paginate(
-            github.rest.pulls.listFiles,
-            {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number,
+      - name: Label PR based on changed files
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const changedFiles = await github.paginate(
+              github.rest.pulls.listFiles,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number
+              }
+            );
+
+            const labels = new Set();
+            for (const file of changedFiles) {
+              if (file.filename.startsWith('R/')) {
+                labels.add('R Code');
+              } else if (file.filename.startsWith('man/')) {
+                labels.add('Documentation');
+              }
             }
-          );
 
-          const labels = new Set();
-
-          for (const file of changedFiles) {
-            if (file.filename.endsWith('.R')) {
-              labels.add('R-scripts');
-            } else if (file.filename.includes('tests/')) {
-              labels.add('tests');
-            } else if (file.filename.endsWith('.Rd') || file.filename.endsWith('.md')) {
-              labels.add('documentation');
+            if (labels.size > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                labels: Array.from(labels),
+              });
             }
-          }
-
-          if (labels.size > 0) {
-            await github.rest.issues.addLabels({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.payload.pull_request.number,
-              labels: Array.from(labels),
-            });
-          }
