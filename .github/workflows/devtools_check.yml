@@ -17,9 +17,12 @@ jobs:
       with:
         r-version: "4.3"
 
-    - name: Install dependencies
+    - name: Install devtools
       run: |
-        Rscript -e 'install.packages(c("devtools", "remotes"))'
+        Rscript -e 'install.packages("devtools", repos = "https://cloud.r-project.org")'
+
+    - name: Install package dependencies
+      run: |
         Rscript -e 'remotes::install_deps(dependencies = TRUE)'
 
     - name: Run devtools::check
