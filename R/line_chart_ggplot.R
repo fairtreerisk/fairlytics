@@ -31,6 +31,7 @@
 #'   ColorGroup = rep(c("Red", "Blue"), each = 5),
 #'   Group = rep(c("A", "B"), each = 5)
 #' )
+#'
 #' chart <- LineChart(
 #'   df = data,
 #'   x_col = "Date",
@@ -59,3 +60,5 @@ LineChart <- function(df, x_col, y_col, color_col,group_col,chart_title){
 
   return(ggplotly(p))
 }
+
+
