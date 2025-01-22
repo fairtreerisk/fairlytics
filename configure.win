@@ -1,7 +1,17 @@
-echo off
+@echo off
 echo ------------------------------------------------------
 echo Welcome to the Fairlytics Package Installation!
-echo This script will configure your environment for use.
+echo This script will configure your environment by saving your GitHub token.
 echo ------------------------------------------------------
 
-Rscript -e "source('scripts/private_token.R'); save_github_token()"
+REM Run an R script to save the GitHub token
+Rscript -e "save_github_token <- function() { AUTH_PAT_TOKEN <- gh::gh_token(); renviron_path <- normalizePath('~/.Renviron', mustWork = FALSE); if (!file.exists(renviron_path)) { file.create(renviron_path) }; renviron_contents <- readLines(renviron_path); if (any(grepl('^GITHUB_PAT=', renviron_contents))) { renviron_contents <- renviron_contents[!grepl('^GITHUB_PAT=', renviron_contents)] }; renviron_contents <- c(renviron_contents, paste0('GITHUB_PAT=', AUTH_PAT_TOKEN)); writeLines(renviron_contents, renviron_path); message('GitHub token saved to .Renviron. Restart your R session to apply changes.') }; save_github_token()"
+
+if %ERRORLEVEL% neq 0 (
+    echo Error: Failed to save the GitHub token.
+    exit /b 1
+)
+
+echo ------------------------------------------------------
+echo GitHub token saved successfully! Proceeding with installation.
+echo ------------------------------------------------------
