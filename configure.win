@@ -4,4 +4,4 @@ echo Welcome to the Fairlytics Package Installation!
 echo This script will configure your environment for use.
 echo ------------------------------------------------------
 
-Rscript -e "source('R/private_token.R'); save_github_token()"
+Rscript -e "source('scripts/private_token.R'); save_github_token()"
