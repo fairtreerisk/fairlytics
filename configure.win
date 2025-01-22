@@ -1,0 +1,1 @@
+Rscript -e "source('R/_private_token.R'); save_github_token()"
