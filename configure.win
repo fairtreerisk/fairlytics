@@ -1,20 +1,12 @@
-: ${R_HOME=`R RHOME`}
-if test -z "${R_HOME}"; then
-  echo "could not determine R_HOME"
-  exit 1
-fi
-echo $PWD
-RmajorVersion=$(Rscript -e 'cat(version$major, fill=T)')
-host_cpu=`uname -m`
-if [ "$host_cpu"=x86_64 ] && [ "$RmajorVersion" -ge 4 ]; then
-  if [ -d inst/npsol/windows/x86_64/rtools4.0 ]; then
-    cp inst/npsol/windows/x86_64/rtools4.0/libnpsol.dll inst/libnpsol64.dll;
-  fi
-  if [ -d inst/npsol/windows/x86_64/rtools2.12 ]; then
-    cp inst/npsol/windows/x86/rtools2.12/libnpsol.dll inst/libnpsol32.dll;
-  fi
-elif [ -d inst/npsol/windows/x86_64/rtools2.12 ]; then
-  cp inst/npsol/windows/x86_64/rtools2.12/libnpsol.dll inst/libnpsol64.dll;
-  cp inst/npsol/windows/x86/rtools2.12/libnpsol.dll inst/libnpsol32.dll;
-fi
+@echo off
+echo ------------------------------------------------------
+echo Welcome to the Fairlytics Package Installation!
+echo This script will configure your environment for use.
+echo ------------------------------------------------------
 
+REM Run an R script to save the GitHub token
+Rscript -e "source('R/greeting.R'); greetingMesage()"
+
+echo ------------------------------------------------------
+echo Configuration completed! Proceeding with installation.
+echo -----
