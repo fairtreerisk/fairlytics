@@ -26,11 +26,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libxml2-dev libcurl4-openssl-dev libssl-dev pandoc
 
-      # Step 4: Set up R dependencies
+      # Step 4: Install R dependencies
       - name: Install R package dependencies
         run: |
-          Rscript -e 'install.packages("remotes")'
-          Rscript -e 'remotes::install_deps(dependencies = TRUE)'
+          Rscript -e 'install.packages("devtools", repos = "https://cloud.r-project.org")'
+          Rscript -e 'devtools::install_deps(dependencies = TRUE)'
 
       # Step 5: Run devtools::check()
       - name: Run R CMD Check
