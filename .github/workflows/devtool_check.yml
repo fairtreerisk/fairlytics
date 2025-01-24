@@ -26,13 +26,23 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libxml2-dev libcurl4-openssl-dev libssl-dev pandoc
 
-      # Step 4: Install R dependencies
-      - name: Install R package dependencies
+      # Step 4: Create a user library path and set permissions
+      - name: Set up R library path
+        run: |
+          mkdir -p "$HOME/R/library"
+          echo 'R_LIBS_USER=$HOME/R/library' >> $GITHUB_ENV
+
+      # Step 5: Install devtools
+      - name: Install devtools
         run: |
           Rscript -e 'install.packages("devtools", repos = "https://cloud.r-project.org")'
+
+      # Step 6: Install R package dependencies
+      - name: Install R package dependencies
+        run: |
           Rscript -e 'devtools::install_deps(dependencies = TRUE)'
 
-      # Step 5: Run devtools::check()
+      # Step 7: Run devtools::check()
       - name: Run R CMD Check
         run: |
           Rscript -e 'devtools::check()'
