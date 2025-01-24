@@ -54,7 +54,7 @@ LineChart <- function(df, x_col, y_col, color_col,group_col,chart_title){
                                 group = !!sym(group_col))) +
     geom_line() +
     labs(title = chart_title, x = x_col, y = y_col) +
-    scale_y_continuous(labels = scales::percent) +
+    # scale_y_continuous(labels = scales::percent) +
     labs(title = chart_title) +
     xlab("")
 
