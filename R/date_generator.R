@@ -20,7 +20,7 @@
 #'
 #' @import bizdays
 #' @export
-generateBusinessDays <- function(bgn_date, end_date, calendar = "QuantLib/SouthAfrica") {
+GenerateBusinessDays <- function(bgn_date, end_date, calendar = "QuantLib/SouthAfrica") {
   load_quantlib_calendars(ql_calendars = "SouthAfrica", from = bgn_date, to = end_date)
   dates <- bizdays::bizseq(bgn_date, end_date, cal = calendar) %>% as_tibble()
 
