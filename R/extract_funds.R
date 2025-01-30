@@ -28,6 +28,7 @@
 #'
 #' @importFrom magrittr %>%
 #' @importFrom tidyr separate
+#' @importFrom data.table :=
 #'
 ExtractFunds <- function(raw_holdings_data,report_col, universe_info_col, include_benchmarks = T){
   df <- raw_holdings_data %>%
