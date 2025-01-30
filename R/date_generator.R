@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' # Example usage:
-#' generateBusinessDays("2025-01-01", "2025-01-31", calendar = "QuantLib/SouthAfrica")
+#' GenerateBusinessDays("2025-01-01", "2025-01-31", calendar = "QuantLib/SouthAfrica")
 #'
 #' @import bizdays
 #' @export
