@@ -1,5 +1,5 @@
 Package: fairlytics
-Title: The package provides a collection of essential functions for performing data cleaning and processing
+Title: The package provides a collection of Fairtree functions for performing data cleaning and processing
 Version: 1.1.2.0
 Authors@R: 
     person("Menzi", "Njakazi", , "menzin@fairtree.com", role = c("aut", "cre"))
@@ -41,4 +41,8 @@ Imports:
     RDCOMClient,
     AzureAuth,
     AzureGraph,
-    highcharter
+    highcharter,
+    DBI,
+    glue,
+    logger,
+    data.table
