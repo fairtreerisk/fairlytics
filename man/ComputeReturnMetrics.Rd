@@ -48,10 +48,12 @@ library(lubridate)
 library(bizdays)
 
 # Load business calendar
-load_quantlib_calendars(ql_calendars = "SouthAfrica", from = as.Date("2023-01-01"), to = as.Date("2024-12-31"))
+load_quantlib_calendars(ql_calendars = "SouthAfrica",
+from = as.Date("2023-01-01"), to = as.Date("2024-12-31"))
 
 # Create example business dates
-biz_dates <- bizdays::bizseq(from = as.Date("2023-01-01"), to = as.Date("2024-12-31"), cal = "QuantLib/SouthAfrica")
+biz_dates <- bizdays::bizseq(from = as.Date("2023-01-01"),
+to = as.Date("2024-12-31"), cal = "QuantLib/SouthAfrica")
 
 # Sample cumulative returns dataset
 set.seed(123)
@@ -62,7 +64,8 @@ cumulative_df <- data.frame(
 )
 
 # Run function
-ComputeReturnMetrics(cumulative_df, "Date", as.Date("2024-01-31"), value_cols = c("Return1", "Return2"))
+ComputeReturnMetrics(cumulative_df, "Date", as.Date("2024-01-31"),
+value_cols = c("Return1", "Return2"))
 }
 
 }

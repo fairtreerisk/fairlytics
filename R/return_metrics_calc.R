@@ -28,10 +28,12 @@
 #' library(bizdays)
 #'
 #' # Load business calendar
-#' load_quantlib_calendars(ql_calendars = "SouthAfrica", from = as.Date("2023-01-01"), to = as.Date("2024-12-31"))
+#' load_quantlib_calendars(ql_calendars = "SouthAfrica",
+#' from = as.Date("2023-01-01"), to = as.Date("2024-12-31"))
 #'
 #' # Create example business dates
-#' biz_dates <- bizdays::bizseq(from = as.Date("2023-01-01"), to = as.Date("2024-12-31"), cal = "QuantLib/SouthAfrica")
+#' biz_dates <- bizdays::bizseq(from = as.Date("2023-01-01"),
+#' to = as.Date("2024-12-31"), cal = "QuantLib/SouthAfrica")
 #'
 #' # Sample cumulative returns dataset
 #' set.seed(123)
@@ -42,56 +44,69 @@
 #' )
 #'
 #' # Run function
-#' ComputeReturnMetrics(cumulative_df, "Date", as.Date("2024-01-31"), value_cols = c("Return1", "Return2"))
+#' ComputeReturnMetrics(cumulative_df, "Date", as.Date("2024-01-31"),
+#' value_cols = c("Return1", "Return2"))
 #' }
 #'
 #' @import dplyr
 #' @import lubridate
 #' @import bizdays
+#' @import tidyr
+#' @import RQuantLib
 #' @export
-ComputeReturnMetrics  <- function(cumulative_df,date_col,current_date,
-                                      value_cols = NULL,
-                                      calendar = "QuantLib/SouthAfrica") {
-
-  output_tbl <- data.frame()
+ComputeReturnMetrics <- function(cumulative_df, date_col, current_date,
+                                 value_cols = NULL,
+                                 calendar = "QuantLib/SouthAfrica") {
   min_date <- min(cumulative_df[[date_col]])
   max_date <- max(cumulative_df[[date_col]])
 
-  load_quantlib_calendars(ql_calendars = str_remove_all(calendar,"QuantLib/"),
+  load_quantlib_calendars(ql_calendars = str_remove_all(calendar, "QuantLib/"),
                           from = min_date, to = max_date)
   biz_dates <- bizdays::bizseq(from = min_date, to = max_date, cal = calendar)
 
-  # Get MTD start date
-  month_bgn_date <- floor_date(current_date, "month")
-  last_month_end_date <- .getLastBizDate(month_bgn_date - days(1), biz_dates)
+  if (nrow(cumulative_df) == 1) {
+    out <- cumulative_df %>%
+      mutate(across(all_of(value_cols), ~ . / 100 - 1)) %>%
+      crossing(Metrics = c("Month-to-Date", "Year-to-Date", "Inception-to-Date"))
+    return(out)
+  }
 
-  # Get YTD start date
-  ytd_start_date <- floor_date(current_date, "year")
-  last_year_end_date <- .getLastBizDate(ytd_start_date - days(1), biz_dates)
+  get_last_biz_date <- function(date) {
+    valid_dates <- biz_dates[biz_dates <= date]
+    if (length(valid_dates) > 0) {
+      return(max(valid_dates, na.rm = TRUE))
+    } else {
+      return(NA)  # Return NA if no valid dates exist
+    }
+  }
 
-  # MTD Return
-  mtd_rtn <- cumulative_df %>%
-    filter(!!sym(date_col) %in% c(last_month_end_date, current_date)) %>%
-    arrange(!!sym(date_col)) %>%
-    summarise(across(all_of(value_cols), ~ last(.) / first(.) - 1)) %>%
-    mutate(Metrics = "Month-to-Date")
+  adjust_to_biz_date <- function(date) {
+    if (is.na(date)) return(min_date)  # Default to min_date if no valid business date
+    while (!(date %in% biz_dates) && date > min_date) {
+      date <- date - days(1)
+    }
+    max(date, min_date)
+  }
 
-  # YTD Return
-  ytd_rtn <- cumulative_df %>%
-    filter(!!sym(date_col) %in% c(last_year_end_date, current_date)) %>%
-    arrange(!!sym(date_col)) %>%
-    summarise(across(all_of(value_cols), ~ last(.) / first(.) - 1)) %>%
-    mutate(Metrics = "Year-to-Date")
+  last_month_end <- adjust_to_biz_date(get_last_biz_date(floor_date(current_date, "month") - days(1)))
+  last_year_end <- adjust_to_biz_date(get_last_biz_date(floor_date(current_date, "year") - days(1)))
 
-  # Inception-to-Date Return
-  inception_rtn <- cumulative_df %>%
-    filter(!!sym(date_col) == current_date) %>%
-    mutate(across(all_of(value_cols), ~ . / 100 - 1)) %>%
-    mutate(Metrics = "Inception-to-Date")
+  calc_return <- function(start_date, label) {
+    cumulative_df %>%
+      filter(!!sym(date_col) %in% c(start_date, current_date)) %>%
+      arrange(!!sym(date_col)) %>%
+      summarise(across(all_of(value_cols), ~ last(.) / first(.) - 1),
+                Metrics = label)
+  }
 
-  # Combine Results
-  output_tbl <- bind_rows(mtd_rtn, ytd_rtn, inception_rtn) %>%
+  out <- bind_rows(
+    calc_return(last_month_end, "Month-to-Date"),
+    calc_return(last_year_end, "Year-to-Date"),
+    cumulative_df %>%
+      filter(!!sym(date_col) == current_date) %>%
+      mutate(across(all_of(value_cols), ~ . / 100 - 1), Metrics = "Inception-to-Date")
+  ) %>%
     select("Metrics", all_of(value_cols))
 
-  return(output_tbl)
+  return(out)
 }
