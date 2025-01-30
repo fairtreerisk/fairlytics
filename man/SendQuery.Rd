@@ -13,7 +13,7 @@ SendQuery(conn, query, max_retries = 2, retry_delay_seconds = 30)
 
 \item{max_retries}{An integer specifying the maximum number of retry attempts if the query fails. Default is 2.}
 
-\item{retry_delay}{An integer specifying the delay in seconds between retry attempts. Default is 30.}
+\item{retry_delay_seconds}{An integer specifying the delay in seconds between retry attempts. Default is 30.}
 }
 \value{
 A tibble containing the result of the SQL query. Returns \code{NULL} if the query fails after all retry attempts.

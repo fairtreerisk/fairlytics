@@ -8,7 +8,7 @@
 #' @param conn A database connection object. Typically created using `DBI::dbConnect()`.
 #' @param query A character string representing the SQL query to be executed.
 #' @param max_retries An integer specifying the maximum number of retry attempts if the query fails. Default is 2.
-#' @param retry_delay An integer specifying the delay in seconds between retry attempts. Default is 30.
+#' @param retry_delay_seconds An integer specifying the delay in seconds between retry attempts. Default is 30.
 #'
 #' @return A tibble containing the result of the SQL query. Returns `NULL` if the query fails after all retry attempts.
 #'
@@ -30,6 +30,8 @@
 #' @importFrom stringr str_match str_trim
 #' @importFrom glue glue
 #'
+#' @import logger
+#'
 #' @export
 SendQuery <- function(conn, query, max_retries = 2, retry_delay_seconds = 30) {
   result <- NULL
@@ -48,14 +50,14 @@ SendQuery <- function(conn, query, max_retries = 2, retry_delay_seconds = 30) {
       result <- dbGetQuery(conn, query) %>%
         as_tibble()
 
-      log_info(glue::glue(
+      log_info(glue(
         "trySQLQuery: ({table_name}). Rows returned: {nrow(result)}"
       ))
 
       success <- TRUE
     },
     error = function(e) {
-      log_warn(glue::glue(
+      log_warn(glue(
         "trySQLQuery: ({table_name}) - Query error on attempt {attempt}: {e$message}"
       ))
     })
@@ -67,7 +69,7 @@ SendQuery <- function(conn, query, max_retries = 2, retry_delay_seconds = 30) {
   }
 
   if (!success) {
-    log_warn(glue::glue("trySQLQuery: ({table_name}) - Query failed after {max_retries} attempts."))
+    log_warn(glue("trySQLQuery: ({table_name}) - Query failed after {max_retries} attempts."))
   }
 
   return(result)
