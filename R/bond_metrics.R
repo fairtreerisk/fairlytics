@@ -26,9 +26,6 @@
 #'
 #' @import dplyr
 #'
-#' @examples
-#' # Calculating bond metrics for the given data frame
-#' BondMetrics(credit_df)
 BondMetrics <- function(Cube){
 
   metrics_df <- Cube %>%

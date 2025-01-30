@@ -34,7 +34,3 @@ The \code{BondMetrics} function calculates and augments bond metrics from a give
 It computes current yield, weighted metrics (Modified Duration, Credit Spread Duration, and Current Yield)
 based on specified weights, and categorizes bonds into maturity year ranges.
 }
-\examples{
-# Calculating bond metrics for the given data frame
-BondMetrics(credit_df)
-}
