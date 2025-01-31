@@ -20,13 +20,21 @@
 #'
 #' @export
 #'
-Send365Mail <- function(receiver, mail_cc, subject, mail_body = NULL, mail_attachment = NULL){
+Send365Mail <- function(receiver, mail_cc, subject, mail_body = "", mail_attachment = NULL){
+
+  user <- Sys.getenv("username")
+  addrs <- paste0(str_to_title(str_sub(user, start = 1, end = -2)), " (", user,"@fairtree.com)")
+  sig_file <- paste0("C:/Users/", user, "/AppData/Roaming/Microsoft/Signatures/", addrs, ".htm")
+  signature <- if (file.exists(sig_file)) {
+    tryCatch(paste0(readLines(sig_file, warn = FALSE), collapse = "\n"),
+             error = function(e) "")
+  } else NULL
 
   outl <- get_business_outlook()
-  Email <- outl$create_email(content_type = 'html')
+  Email <- outl$create_email(content_type='html')
   Email$set_recipients(to = receiver, cc = mail_cc)
   Email$set_subject(subject)
-  Email$set_body(mail_body)
+  Email$set_body(paste0(mail_body, "<br>", signature))
 
   if (!is.null(mail_attachment))
     for (attch in mail_attachment)
