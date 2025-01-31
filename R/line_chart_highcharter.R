@@ -47,6 +47,8 @@
 #' @export
 LineChartr <- function(df, x_col, y_col, color_col,group_col, chart_title){
 
+  .inputColumnChecker(df, x_col, y_col, color_col,group_col)
+
   p <- hchart(df, "line", hcaes(x = !!sym(x_col), y = !!sym(y_col), group = !!sym(group_col))) %>%
     hc_exporting(enabled = TRUE, filename = paste0(chart_title)) %>%
     hc_rangeSelector(enabled = FALSE) %>%

@@ -18,6 +18,9 @@
 #'
 #' @export
 GenerateCalendarReturn <- function(df, date_col, return_col) {
+
+  .inputColumnChecker(df, date_col, return_col) # check input column names
+
   df[[date_col]] <- as_date(df[[date_col]])
   calender_data <- df %>%
     mutate(Year = lubridate::year(!!sym(date_col)),

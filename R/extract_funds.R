@@ -31,6 +31,9 @@
 #' @importFrom data.table :=
 #'
 ExtractFunds <- function(raw_holdings_data,report_col, universe_info_col, include_benchmarks = T){
+
+  .inputColumnChecker(raw_holdings_data, report_col, universe_info_col)
+
   df <- raw_holdings_data %>%
     distinct(!!sym(report_col) := .data[[report_col]],
              !!sym(universe_info_col) := .data[[universe_info_col]]) %>%
