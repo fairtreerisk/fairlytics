@@ -29,6 +29,7 @@
 #' @import dplyr
 #' @import cli
 #' @importFrom magrittr %>%
+#' @importFrom data.table :=
 #'
 #' @examples
 #' # Example data for overall fund holdings

@@ -4,13 +4,7 @@
 \alias{Send365Mail}
 \title{Send365Mail}
 \usage{
-Send365Mail(
-  receiver,
-  mail_cc,
-  subject,
-  mail_body = NULL,
-  mail_attachment = NULL
-)
+Send365Mail(receiver, mail_cc, subject, mail_body = "", mail_attachment = NULL)
 }
 \arguments{
 \item{receiver}{A character vector of email addresses to receive the email.}

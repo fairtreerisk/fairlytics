@@ -4,7 +4,7 @@
 \name{fairlytics-package}
 \alias{fairlytics}
 \alias{fairlytics-package}
-\title{fairlytics: The package provides a collection of essential functions for performing data cleaning and processing}
+\title{fairlytics: The package provides a collection of Fairtree functions for performing data cleaning and processing}
 \description{
 The `fairlytics` package provides a collection of essential functions developed and used by the team. The package includes a variety of functions for data cleaning, manipulation, visualization and data analysis,
 }
