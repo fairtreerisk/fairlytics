@@ -48,6 +48,8 @@
 #' @export
 LineChart <- function(df, x_col, y_col, color_col,group_col,chart_title){
 
+  .inputColumnChecker(df, x_col, y_col, color_col,group_col)
+
   p <- ggplot(df, mapping = aes(x = !!sym(x_col),
                                 y = !!sym(y_col),
                                 color = !!sym(color_col),

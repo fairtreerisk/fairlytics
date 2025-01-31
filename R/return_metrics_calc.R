@@ -57,6 +57,9 @@
 ComputeReturnMetrics <- function(cumulative_df, date_col, current_date,
                                  value_cols = NULL,
                                  calendar = "QuantLib/SouthAfrica") {
+
+  .inputColumnChecker(cumulative_df, date_col,value_cols)
+
   min_date <- min(cumulative_df[[date_col]])
   max_date <- max(cumulative_df[[date_col]])
 

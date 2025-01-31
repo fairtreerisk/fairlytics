@@ -63,6 +63,8 @@
 #' @export
 LineChartWrapper <- function(df, x_col, y_col, color_col, group_col, chart_title, plot_engine = c("ggplot2", "highcharter")) {
 
+  .inputColumnChecker(df, x_col, y_col, color_col,group_col)
+
   p <- switch(plot_engine,
               "ggplot2" = LineChart(df = df,
                                     x_col = x_col,
