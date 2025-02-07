@@ -1,7 +1,6 @@
 # fairlytics
 
-[![.github/workflows/labeler.yml](https://github.com/Menzy17/fairlytics/actions/workflows/labeler.yml/badge.svg)](https://github.com/Menzy17/fairlytics/actions/workflows/labeler.yml)
-
+[![R-CMD-check.yaml](https://github.com/Menzy17/fairlytics/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Menzy17/fairlytics/actions/workflows/R-CMD-check.yaml)
 
 ### Overview
 
