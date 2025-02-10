@@ -1,7 +1,5 @@
 # fairlytics
 
-[![R-CMD-check.yaml](https://github.com/Menzy17/fairlytics/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Menzy17/fairlytics/actions/workflows/R-CMD-check.yaml)
-
 ### Overview
 
 The `fairlytics` package is a comprehensive toolkit developed to streamline and enhance data workflows. Designed by our team for internal use, it offers a carefully curated collection of essential functions that cater to a wide range of tasks, including:
