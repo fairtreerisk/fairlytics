@@ -1,0 +1,49 @@
+---
+title: "Interactive Accordion Panel"
+# format: html
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+```{r echo=FALSE, include=FALSE}
+
+library(fairlytics)
+library(dplyr)
+library(plotly)
+library(htmltools)
+
+```
+
+In this vignette, we explore how to use the AccordionPanel and WindowPanel functions to create interactive content. These functions enable wrapping content within draggable and scrollable panels, making it easier to display interactive elements in HTML reports or Shiny applications.
+
+
+## Functionality
+
+The AccordionPanel function generates collapsible panels, each containing a bar chart based on a specified grouping column. This is particularly useful for visualizing grouped data in an interactive format without requiring a full Shiny application.
+
+
+# Example Usage
+The following example demonstrates how to create an interactive accordion panel with bar charts grouped by category:
+
+```{r results='asis'}
+
+mydata <- data.frame(
+  group_value = rep(c("Group A", "Group B", "Group C"), each = 3),
+  category = rep(c("Category 1", "Category 2", "Category 3"), times = 3),
+  amount = c(10, 20, 15, 25, 35, 30, 40, 50, 45)
+)
+
+accordion_content <- AccordionPanel(
+  df = mydata,
+  value_col = "amount",
+  grouping_col = "group_value",
+  chart_title = "Collapsible Bar Charts"
+)
+
+```
+
+

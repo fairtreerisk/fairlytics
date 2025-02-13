@@ -1,0 +1,12 @@
+pandoc: '3.5'
+pkgdown: 2.0.7
+pkgdown_sha: ~
+articles:
+  charts: charts.html
+  fairlytics: fairlytics.html
+  window_accordion_doc: window_accordion_doc.html
+last_built: 2025-02-13T09:22Z
+urls:
+  reference: https://menzy17.github.io/Fairlytics/reference
+  article: https://menzy17.github.io/Fairlytics/articles
+

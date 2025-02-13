@@ -17,10 +17,6 @@
 #' @import AzureGraph
 #'
 #' @export
-#'
-#' @examples
-#' # Initialize the Microsoft 365 token
-#' token <- SetupMicrosoft365Auth()
 SetupMicrosoft365Auth <- function(tenant = "fairtree.com", app_id="d44a05d5-c6a5-4bbb-82d2-443123722380") {
 
   # Microsoft 365 scopes

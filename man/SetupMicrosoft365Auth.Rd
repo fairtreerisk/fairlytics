@@ -23,7 +23,3 @@ This token is essential when using functionality such as accessing user informat
 
 \strong{Note:} When \code{SetupMicrosoft365Auth} is run for the first time, it prompts for authorization via the Authenticator app.
 }
-\examples{
-# Initialize the Microsoft 365 token
-token <- SetupMicrosoft365Auth()
-}

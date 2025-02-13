@@ -1,0 +1,59 @@
+---
+title: "Introduction to fairlytics"
+format: html
+editor: visual
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+The `fairlytics` package is a comprehensive toolkit developed to streamline and enhance data workflows. Designed by our team for internal use, it offers a carefully curated collection of essential functions that cater to a wide range of tasks, including:
+
+-   **Data Cleaning:** Simplify and automate the process of preparing raw data for analysis.
+
+-   **Data Manipulation:** Effortlessly reshape and transform datasets to extract meaningful insights.
+
+-   **Data Visualization:** Create intuitive and impactful visualizations that communicate key findings effectively.
+
+-   **Data Analysis:** Leverage robust analytical tools to uncover trends and drive data-driven decisions.
+
+### Why use fairlytics?
+
+The `fairlytics` package is built to:
+
+-   **Enhance Productivity:** Reduce the time spent on repetitive tasks with ready-to-use functions.
+
+-   **Ensure Consistency:** Maintain uniformity in data processing and analysis across projects.
+
+-   **Promote Collaboration:** Provide a shared library of tools that reflect best practices and team standards.
+
+### Installation
+
+To install and begin using the `fairlytics` package, use the following commands:
+
+```{r  eval=FALSE, echo=TRUE}
+
+# Uncomment if devtools is not installed
+# install.packages("devtools")
+devtools::install_github("menzy17/fairlytics")
+
+# Load the package
+library(fairlytics)
+
+```
+
+
+### Getting Help
+
+For detailed documentation and examples, refer to function documentation:
+
+```{r eval=FALSE, echo=TRUE}
+
+# replace foo with the actual function name
+?fairlytics::foo
+
+```
+
+
+
