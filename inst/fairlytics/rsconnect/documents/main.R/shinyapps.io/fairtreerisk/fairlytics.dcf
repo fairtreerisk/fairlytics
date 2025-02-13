@@ -5,7 +5,7 @@ account: fairtreerisk
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 13979089
-bundleId: 9789009
+bundleId: 9793758
 url: https://fairtreerisk.shinyapps.io/fairlytics/
 version: 1
 asMultiple: FALSE
