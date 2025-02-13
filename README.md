@@ -22,23 +22,8 @@ The `fairlytics` package is built to:
 
 -   **Promote Collaboration:** Provide a shared library of tools that reflect best practices and team standards.
 
-### Getting Started
-
-To install and begin using the `fairlytics` package, follow these steps:
-
-```{r}
-
-# Install fairlytics from GitHub
-# install.packages("devtools") # Uncomment if devtools is not installed
-devtools::install_github("menzy17/fairlytics")
-
-# Load the package
-library(fairlytics)
-
-```
-
-Explore the documentation to learn more about each function and its use cases. The `fairlytics` package is continuously updated to incorporate feedback and evolving team requirements.
-
 ### Code Guide
 
 When contributing to this project, please follow this code guide [here](inst/fairtree_R_code_guide.pdf)
+
+Explore the documentation to learn more about each function and its use cases. The `fairlytics` package is continuously updated to incorporate feedback and evolving team requirements.
