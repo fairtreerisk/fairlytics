@@ -1,0 +1,26 @@
+url: "https://menzy17.github.io/Fairlytics"
+template:
+  bootstrap: 5
+  light-switch: true
+navbar:
+  structure:
+    left:  [intro, reference, articles, tutorials, news]
+    right: [search, github, lightswitch]
+  components:
+    intro:
+      text: "Get Started"
+      href: "articles/fairlytics.html"
+    reference:
+      text: "Reference"
+      href: "reference/index.html"
+    github:
+      icon: fa-github
+      href: https://github.com/menzy17/Fairlytics
+    articles:
+      text: Articles
+      menu:
+      - text: "Charts Showcase"
+        href: "articles/charts.html"
+      - text: "Interactive Accordion Panel"
+        href: "articles/window_accordion_doc.html"
+
