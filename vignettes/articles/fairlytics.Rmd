@@ -36,7 +36,7 @@ To install and begin using the `fairlytics` package, use the following commands:
 
 # Uncomment if devtools is not installed
 # install.packages("devtools")
-devtools::install_github("menzy17/fairlytics")
+devtools::install_github("fairtreerisk/fairlytics")
 
 # Load the package
 library(fairlytics)
