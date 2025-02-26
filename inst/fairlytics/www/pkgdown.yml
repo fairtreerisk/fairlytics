@@ -1,12 +1,11 @@
 pandoc: '3.5'
-pkgdown: 2.0.7
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
-  charts: charts.html
-  fairlytics: fairlytics.html
-  window_accordion_doc: window_accordion_doc.html
-last_built: 2025-02-17T07:38Z
+  articles/charts: charts.html
+  articles/fairlytics: fairlytics.html
+  articles/window_accordion_doc: window_accordion_doc.html
+last_built: 2025-02-26T08:42Z
 urls:
   reference: https://fairtree.github.io/Fairlytics/reference
   article: https://fairtree.github.io/Fairlytics/articles
-
