@@ -18,7 +18,7 @@
 #' @param h_color (string) specifying the high-end color for the heatmap gradient
 #' (default: `"darkorange3"`).
 #'
-#' @return A heatmap as a `plotly::ggplotly` object.
+#' @return A heatmap as a `ggplot2` object.
 #'
 #' @export
 #'
@@ -40,6 +40,7 @@
 #'   value_col = "allocation",
 #'   chart_title = "Asset Allocation Heatmap"
 #' )
+#'
 AssetClassAllocationTable <- function(df, x_col, y_col, value_col, chart_title,
                                       l_color="honeydew1", h_color="darkorange3"){
 
@@ -62,7 +63,7 @@ AssetClassAllocationTable <- function(df, x_col, y_col, value_col, chart_title,
     ggtitle(chart_title) +
     theme(plot.title = element_text(size = 18))
 
-  return(ggplotly(p))
+  return(p)
 }
 
 

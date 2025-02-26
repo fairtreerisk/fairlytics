@@ -34,6 +34,7 @@
 #'   ColorGroup = rep(c("Red", "Blue"), each = 5),
 #'   Group = rep(c("A", "B"), each = 5)
 #' )
+#'
 #' chart_ggplot2 <- LineChartWrapper(
 #'   df = data,
 #'   x_col = "Date",
@@ -43,7 +44,8 @@
 #'   chart_title = "Interactive Line Chart (ggplot2)",
 #'   plot_engine = "ggplot2"
 #' )
-#' chart_ggplot2
+#'
+#'chart_ggplot2
 #'
 #' chart_highcharter <- LineChartWrapper(
 #'   df = data,
@@ -57,11 +59,17 @@
 #' chart_highcharter
 #'
 #' @import ggplot2
-#' @import plotly
 #' @import highcharter
 #' @importFrom scales percent
 #' @export
-LineChartWrapper <- function(df, x_col, y_col, color_col, group_col, chart_title, plot_engine = c("ggplot2", "highcharter")) {
+LineChartWrapper <- function(df,
+                             x_col,
+                             y_col,
+                             color_col,
+                             group_col,
+                             chart_title,
+                             plot_engine = c("ggplot2", "highcharter"),
+                             percent_y_axis = TRUE) {
 
   .inputColumnChecker(df, x_col, y_col, color_col,group_col)
 
@@ -71,13 +79,15 @@ LineChartWrapper <- function(df, x_col, y_col, color_col, group_col, chart_title
                                     y_col = y_col,
                                     color_col = color_col,
                                     group_col = group_col,
-                                    chart_title = chart_title),
+                                    chart_title = chart_title,
+                                    percent_y_axis = TRUE),
               "highcharter" = LineChartr(df = df,
                                          x_col = x_col,
                                          y_col = y_col,
                                          color_col = color_col,
                                          group_col = group_col,
-                                         chart_title = chart_title)
+                                         chart_title = chart_title,
+                                         percent_y_axis = TRUE)
   )
 
   return(p)

@@ -12,7 +12,7 @@
 #' @param group_col A string representing the column name in `df` used to group the data into series.
 #' @param chart_title A string for the title of the chart.
 #'
-#' @return A `plotly` object representing the interactive line chart.
+#' @return A `ggplot2` object representing the interactive line chart.
 #'
 #' @details
 #' This function uses `ggplot2` to create a line chart with the following features:
@@ -32,7 +32,7 @@
 #'   Group = rep(c("A", "B"), each = 5)
 #' )
 #'
-#' chart <- LineChart(
+#'LineChart(
 #'   df = data,
 #'   x_col = "Date",
 #'   y_col = "Value",
@@ -40,15 +40,17 @@
 #'   group_col = "Group",
 #'   chart_title = "Interactive Line Chart"
 #' )
-#' chart
+#'
 #'
 #' @import ggplot2
 #' @import plotly
 #' @importFrom scales percent
 #' @export
-LineChart <- function(df, x_col, y_col, color_col,group_col,chart_title){
+LineChart <- function(df, x_col, y_col, color_col,group_col,chart_title, percent_y_axis = TRUE){
 
   .inputColumnChecker(df, x_col, y_col, color_col,group_col)
+
+  y_scale_labels <- if (percent_y_axis) scales::percent else waiver()
 
   p <- ggplot(df, mapping = aes(x = !!sym(x_col),
                                 y = !!sym(y_col),
@@ -56,10 +58,10 @@ LineChart <- function(df, x_col, y_col, color_col,group_col,chart_title){
                                 group = !!sym(group_col))) +
     geom_line() +
     labs(title = chart_title, x = x_col, y = y_col) +
-    # scale_y_continuous(labels = scales::percent) +
+    scale_y_continuous(labels = y_scale_labels) +
     labs(title = chart_title) +
     xlab("")
 
-  return(ggplotly(p))
+  return(p)
 }
 

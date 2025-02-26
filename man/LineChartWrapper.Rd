@@ -11,7 +11,8 @@ LineChartWrapper(
   color_col,
   group_col,
   chart_title,
-  plot_engine = c("ggplot2", "highcharter")
+  plot_engine = c("ggplot2", "highcharter"),
+  percent_y_axis = TRUE
 )
 }
 \arguments{
@@ -57,6 +58,7 @@ data <- data.frame(
   ColorGroup = rep(c("Red", "Blue"), each = 5),
   Group = rep(c("A", "B"), each = 5)
 )
+
 chart_ggplot2 <- LineChartWrapper(
   df = data,
   x_col = "Date",
@@ -66,6 +68,7 @@ chart_ggplot2 <- LineChartWrapper(
   chart_title = "Interactive Line Chart (ggplot2)",
   plot_engine = "ggplot2"
 )
+
 chart_ggplot2
 
 chart_highcharter <- LineChartWrapper(

@@ -4,7 +4,15 @@
 \alias{LineChart}
 \title{LineChart}
 \usage{
-LineChart(df, x_col, y_col, color_col, group_col, chart_title)
+LineChart(
+  df,
+  x_col,
+  y_col,
+  color_col,
+  group_col,
+  chart_title,
+  percent_y_axis = TRUE
+)
 }
 \arguments{
 \item{df}{A data frame containing the data to be visualized.}
@@ -20,7 +28,7 @@ LineChart(df, x_col, y_col, color_col, group_col, chart_title)
 \item{chart_title}{A string for the title of the chart.}
 }
 \value{
-A \code{plotly} object representing the interactive line chart.
+A \code{ggplot2} object representing the interactive line chart.
 }
 \description{
 A function to create an interactive line chart using \code{ggplot2} and \code{plotly} with customizable
@@ -46,7 +54,7 @@ data <- data.frame(
   Group = rep(c("A", "B"), each = 5)
 )
 
-chart <- LineChart(
+LineChart(
   df = data,
   x_col = "Date",
   y_col = "Value",
@@ -54,6 +62,6 @@ chart <- LineChart(
   group_col = "Group",
   chart_title = "Interactive Line Chart"
 )
-chart
+
 
 }
