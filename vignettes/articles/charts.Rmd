@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 
-```{r setup, include=FALSE} 
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 
@@ -14,30 +14,28 @@ library(fairlytics)
 
 ```
 
-
-In this vignette well review and showcase some examples of the charts and visualization supported by `fairlytics`. 
-The vignette helps with familiarizing the names of the chart functions for the user.
-
+In this vignette well review and showcase some examples of the charts and visualization supported by `fairlytics`. The vignette helps with familiarizing the names of the chart functions for the user.
 
 ## Deviation Chart
 
 ```{r}
 
+library(plotly)
 
 test_df <- data.frame(
    instrument = c("Instrument A", "Instrument B", "Instrument C"),
    active_weight = c(0.002, -0.001, 0.0003)
 )
 
-ActiveWeightsDeviationChart(df = test_df,
+chart <- ActiveWeightsDeviationChart(df = test_df,
                             instrument_col = "instrument",
                             active_weight_col = "active_weight",
                             min_band = -0.0005, 
                             max_band = 0.0005)
 
+ggplotly(chart)
 
 ```
-
 
 ## Asset Allocation HeatMap
 
@@ -57,10 +55,11 @@ AssetClassAllocationTable(df = test_df,
 
 ```
 
-
 ## Portfolio Model Table
 
 ```{r}
+
+library(plotly)
 
 portfolio_model_df <- data.frame(
   account_code = c('abc', 'xyz', 'test0001'),
@@ -82,10 +81,11 @@ PortfolioModelTable(
 
 ```
 
-
 ## Relative Weight Bar
 
 ```{r}
+
+library(plotly)
 
 relative_df <- data.frame(
   instrument = c("Instrument A", "Instrument B", "Instrument C"),
@@ -93,19 +93,19 @@ relative_df <- data.frame(
   fund_label = c("Fund 1", "Fund 1", "Fund 2")
   )
 
-RelativeWeightBarChart(df = relative_df, 
+chart <- RelativeWeightBarChart(df = relative_df, 
                        instrument_col = "instrument", 
                        weight_col = "weight", 
                        fund_label_col = "fund_label", 
                        txt_abv_grph = 0.02)
 
-```
+ggplotly(chart)
 
+```
 
 ## Line Charts
 
 For line charts `fairlytics` support two different plotting engines. You can use highcharter or ggplot2 as your plotting engine.
-
 
 ### ggplot Line Chart
 
@@ -122,18 +122,19 @@ test_data <- data.frame(
   Group = rep(c("A", "B"), each = 5)
   )
 
-LineChart(
+chart <- LineChart(
   df = test_data,
   x_col = "Date",
   y_col = "Value",
   color_col = "ColorGroup",
   group_col = "Group",
-  chart_title = "ggplot Line Chart"
+  chart_title = "ggplot Line Chart",
+  percent_y_axis = TRUE
   )
 
+ggplotly(chart)
 
 ```
-
 
 ### Highcharter Line Chart
 
@@ -158,8 +159,6 @@ LineChartr(
   )
 
 ```
-
-
 
 ## line chart wrapper
 
@@ -196,10 +195,9 @@ chart_ggplot2 <- LineChartWrapper(
   plot_engine = "ggplot2"
 )
 
-chart_ggplot2
+ggplotly(chart_ggplot2)
 
 ```
-
 
 ### using HighCharter
 
@@ -216,7 +214,6 @@ LineChartWrapper(
   )
 
 ```
-
 
 ## Calender Returns Table
 
@@ -242,4 +239,3 @@ returns_df <- data.frame(
 CalendarReturnsTable(returns_df)
 
 ```
-
