@@ -12,7 +12,7 @@
 #' @param min_band (numeric) indicating the lower reference line on the y-axis (default: `-0.0005`).
 #' @param max_band (numeric) indicating the upper reference line on the y-axis (default: `0.0005`).
 #'
-#' @return A `plotly::ggplotly` object representing the mirrored bar chart.
+#' @return A `ggplot2` object representing the mirrored bar chart.
 #'
 #' @export
 #'
@@ -30,6 +30,7 @@
 #' ActiveWeightsDeviationChart(test_df,
 #' instrument_col = "instrument",
 #' active_weight_col = "active_weight")
+#'
 ActiveWeightsDeviationChart <- function(df,instrument_col,active_weight_col,
                                         min_band = -0.0005, max_band = 0.0005){
 
@@ -45,6 +46,6 @@ ActiveWeightsDeviationChart <- function(df,instrument_col,active_weight_col,
     geom_hline(yintercept = min_band, linetype = "dashed", color = "red", size = 0.3) +
     coord_flip()
 
-  return(ggplotly(p))
+  return(p)
 
 }

@@ -4,7 +4,15 @@
 \alias{LineChartr}
 \title{LineChartr}
 \usage{
-LineChartr(df, x_col, y_col, color_col, group_col, chart_title)
+LineChartr(
+  df,
+  x_col,
+  y_col,
+  color_col,
+  group_col,
+  chart_title,
+  percent_y_axis = TRUE
+)
 }
 \arguments{
 \item{df}{A data frame containing the data to be visualized.}

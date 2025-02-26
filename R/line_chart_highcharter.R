@@ -45,7 +45,7 @@
 #' @import highcharter
 #' @importFrom lubridate today
 #' @export
-LineChartr <- function(df, x_col, y_col, color_col,group_col, chart_title){
+LineChartr <- function(df, x_col, y_col, color_col,group_col, chart_title, percent_y_axis = TRUE){
 
   .inputColumnChecker(df, x_col, y_col, color_col,group_col)
 
@@ -56,6 +56,12 @@ LineChartr <- function(df, x_col, y_col, color_col,group_col, chart_title){
     hc_yAxis(title = list(text = y_col)) %>%
     hc_plotOptions(series = list(marker = list(enabled = FALSE))) %>%
     hc_chart(backgroundColor = "#ffffff")
+
+  if (percent_y_axis) {
+    p <- p %>% hc_yAxis(title = list(text = y_col), labels = list(format = "{value}%"))
+  } else {
+    p <- p %>% hc_yAxis(title = list(text = y_col))
+  }
 
   # white background color image download fix
   p$x$theme$chart[["backgroundColor"]] <- "#ffffff"

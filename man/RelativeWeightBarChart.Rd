@@ -13,7 +13,7 @@ RelativeWeightBarChart(
   instr_txt_size = 12.5,
   axis_txt_size = 12.5,
   num_size = 4,
-  percent = TRUE
+  percent_y_axis = TRUE
 )
 }
 \arguments{
@@ -41,7 +41,7 @@ value (default: \code{0.05}).}
 raw numbers (\code{FALSE}) (default: \code{TRUE}).}
 }
 \value{
-A \code{plotly::ggplotly} object containing the flipped bar graph.
+A \code{ggplot2} object containing the flipped bar graph.
 }
 \description{
 This function generates a flipped bar graph comprising three vertically aligned bar charts.
@@ -56,6 +56,8 @@ test_df <- data.frame(
   weight = c(0.1, -0.05, 0.2),
   fund_label = c("Fund 1", "Fund 1", "Fund 2")
 )
+
 RelativeWeightBarChart(test_df, "instrument", "weight", "fund_label", txt_abv_grph = 0.02)
+
 
 }

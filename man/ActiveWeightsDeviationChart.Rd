@@ -24,7 +24,7 @@ ActiveWeightsDeviationChart(
 \item{max_band}{(numeric) indicating the upper reference line on the y-axis (default: \code{0.0005}).}
 }
 \value{
-A \code{plotly::ggplotly} object representing the mirrored bar chart.
+A \code{ggplot2} object representing the mirrored bar chart.
 }
 \description{
 Function creates a horizontal bar chart (mirrored layout) to visualize active weights
@@ -40,4 +40,5 @@ test_df <- data.frame(
 ActiveWeightsDeviationChart(test_df,
 instrument_col = "instrument",
 active_weight_col = "active_weight")
+
 }

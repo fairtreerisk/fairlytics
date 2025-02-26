@@ -33,7 +33,7 @@ used for heatmap coloring.}
 (default: \code{"darkorange3"}).}
 }
 \value{
-A heatmap as a \code{plotly::ggplotly} object.
+A heatmap as a \code{ggplot2} object.
 }
 \description{
 This function generates a heatmap to provide a quick overview of asset allocation concentrations
@@ -56,4 +56,5 @@ AssetClassAllocationTable(
   value_col = "allocation",
   chart_title = "Asset Allocation Heatmap"
 )
+
 }

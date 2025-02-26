@@ -21,7 +21,7 @@
 #' @param percent (logical) indicating whether the y-axis should display percentages (`TRUE`) or
 #' raw numbers (`FALSE`) (default: `TRUE`).
 #'
-#' @return A `plotly::ggplotly` object containing the flipped bar graph.
+#' @return A `ggplot2` object containing the flipped bar graph.
 #'
 #' @export
 #'
@@ -38,7 +38,9 @@
 #'   weight = c(0.1, -0.05, 0.2),
 #'   fund_label = c("Fund 1", "Fund 1", "Fund 2")
 #' )
+#'
 #' RelativeWeightBarChart(test_df, "instrument", "weight", "fund_label", txt_abv_grph = 0.02)
+#'
 #'
 RelativeWeightBarChart <- function(df,
                            instrument_col,
@@ -48,11 +50,11 @@ RelativeWeightBarChart <- function(df,
                            instr_txt_size = 12.5,
                            axis_txt_size = 12.5,
                            num_size = 4,
-                           percent = TRUE) {
+                           percent_y_axis = TRUE) {
 
   .inputColumnChecker(df, instrument_col, weight_col, fund_label_col)
 
-  y_scale_labels <- if (percent) scales::percent else waiver()
+  y_scale_labels <- if (percent_y_axis) scales::percent else waiver()
 
   p <- ggplot(df, aes(x = reorder(.data[[instrument_col]], .data[[weight_col]]),
                       y = .data[[weight_col]],
@@ -72,7 +74,7 @@ RelativeWeightBarChart <- function(df,
       legend.position = "none"
     ) +
     geom_text(aes(
-      label = if (percent) paste0(round(100 * .data[[weight_col]], 1), "%") else round(.data[[weight_col]], 2),
+      label = if (percent_y_axis) paste0(round(100 * .data[[weight_col]], 1), "%") else round(.data[[weight_col]], 2),
       y = if_else(.data[[weight_col]] > 0, .data[[weight_col]] + txt_abv_grph, .data[[weight_col]] - txt_abv_grph)
     ), size = num_size) +
     coord_flip() +
@@ -80,5 +82,5 @@ RelativeWeightBarChart <- function(df,
     ylab("") +
     xlab("")
 
-  return(ggplotly(p))
+  return(p)
 }
