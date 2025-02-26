@@ -1,11 +1,11 @@
 name: fairlytics
-title: fairlytics
+title:
 username: fairtreerisk
 account: fairtreerisk
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 13979089
-bundleId:
+bundleId: 9858143
 url: https://fairtreerisk.shinyapps.io/fairlytics/
 version: 1
 asMultiple: FALSE
