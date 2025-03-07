@@ -251,6 +251,7 @@ ggplotly(chart)
 ```
 
 #### Bar Type = 'group'
+
 ```{r }
 
 library(highcharter)
@@ -275,8 +276,8 @@ ggplotly(chart)
 
 ```
 
-
 #### Bar Type = 'stack'
+
 ```{r }
 
 library(highcharter)
@@ -300,7 +301,6 @@ chart <- BarChart(test_data,
 ggplotly(chart)
 
 ```
-
 
 ### ggplot Bar Chart
 
