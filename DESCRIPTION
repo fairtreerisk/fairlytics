@@ -12,6 +12,7 @@ RoxygenNote: 7.3.2
 Depends:
   R (>= 4.2.2.0)
 Imports:
+    rlang,
     dplyr (>= 1.1.4),
     magrittr (>= 2.0.3),
     cli (>= 3.6.2),

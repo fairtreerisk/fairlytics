@@ -4,12 +4,24 @@
 \alias{WindowPanel}
 \title{WindowPanel}
 \usage{
-WindowPanel(panel_layers, title)
+WindowPanel(
+  panel_layers,
+  title,
+  window_position,
+  width = "auto",
+  height = "auto"
+)
 }
 \arguments{
 \item{panel_layers}{(HTML widget) A list of HTML elements representing individual panel sections.}
 
 \item{title}{(string) A title for the window panel, displayed at the top.}
+
+\item{window_position}{(numeric vector) A numeric vector of length 4 specifying the top, right, bottom, and left positioning of the panel.}
+
+\item{width}{(string, default = "auto") The width of the window panel. Defaults to "auto".}
+
+\item{height}{(string, default = "auto") The height of the window panel. Defaults to "auto".}
 }
 \value{
 An HTML element containing the draggable, scrollable window panel.

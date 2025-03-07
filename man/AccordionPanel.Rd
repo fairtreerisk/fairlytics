@@ -8,8 +8,13 @@ AccordionPanel(
   df,
   value_col,
   grouping_col,
+  underlying_bars_col,
   chart_title = NULL,
-  color = "#FF8200"
+  position = c("auto", "auto", "auto", "auto"),
+  width = "auto",
+  height = "auto",
+  color = "#FF8200",
+  underlying_chart_height = 350
 )
 }
 \arguments{
@@ -17,11 +22,21 @@ AccordionPanel(
 
 \item{value_col}{(string) The column in \code{df} that contains the values to be displayed in the chart.}
 
-\item{grouping_col}{(string) The column that will be used to group the data fer each panel.}
+\item{grouping_col}{(string) The column that will be used to group the data for each panel.}
 
-\item{chart_title}{(string) An optional title for the chart, displayed at the top of the panel.}
+\item{underlying_bars_col}{(string) The column that represents the categories for the bars in the chart.}
 
-\item{color}{(hex or string) A color value (in hex format, default is "#FF8200") to define the bar chart's fill color.}
+\item{chart_title}{(string, optional) A title for the chart, displayed at the top of the panel.}
+
+\item{position}{(character vector) A vector of 4 values specifying the position of the panel (\code{top}, \code{right}, \code{bottom}, \code{left}). Default is \code{c("auto", "auto", "auto", "auto")}.}
+
+\item{width}{(character) The width of the panel. Default is \code{"auto"}.}
+
+\item{height}{(character) The height of the panel. Default is \code{"auto"}.}
+
+\item{color}{(string or hex) A color value (in hex format or named color). Default is \code{"#FF8200"}.}
+
+\item{underlying_chart_height}{(numeric) The height of the individual bar charts in the panel. Default is \code{350}.}
 }
 \value{
 An HTML element containing the collapsible panel with grouped bar charts based on \code{ggplot2}.
@@ -35,11 +50,17 @@ various interactive elements compactly and accessibly.
 library(shiny)
 
 # Example data
-mydata <- data.frame(
+test_data <- data.frame(
   group_value = rep(c("Group A", "Group B", "Group C"), each = 3),
   category = rep(c("Category 1", "Category 2", "Category 3"), times = 3),
   amount = c(10, 20, 15, 25, 35, 30, 40, 50, 45)
 )
- AccordionPanel(mydata, value_col = "amount", grouping_col = "group_value",
- chart_title = "Collapsible Bar Charts")
+
+AccordionPanel(
+  df = test_data,
+  value_col = "amount",
+  grouping_col = "group_value",
+  underlying_bars_col = "category",
+  chart_title = "Collapsible Bar Charts"
+)
 }

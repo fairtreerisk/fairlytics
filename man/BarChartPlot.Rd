@@ -4,7 +4,7 @@
 \alias{BarChartPlot}
 \title{BarChartPlot}
 \usage{
-BarChartPlot(df, x_col, y_col, width = 0.5, color = "#FF8200")
+BarChartPlot(df, x_col, y_col, width = 0.5, height = 250, color = "#FF8200")
 }
 \arguments{
 \item{df}{A data frame containing the data for the bar chart.}
