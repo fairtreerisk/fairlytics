@@ -15,11 +15,16 @@
 <url><loc>https://fairtree.github.io/Fairlytics/LICENSE.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/AccordionPanel.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/ActiveWeightsDeviationChart.html</loc></url>
+<url><loc>https://fairtree.github.io/Fairlytics/reference/AreaChart.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/AssetClassAllocationTable.html</loc></url>
+<url><loc>https://fairtree.github.io/Fairlytics/reference/BarChart.html</loc></url>
+<url><loc>https://fairtree.github.io/Fairlytics/reference/BarCharter.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/BarChartPlot.html</loc></url>
+<url><loc>https://fairtree.github.io/Fairlytics/reference/BarChart_ggplot.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/BondMetrics.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/CalendarReturnsTable.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/ComputeReturnMetrics.html</loc></url>
+<url><loc>https://fairtree.github.io/Fairlytics/reference/DonutPlotly.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/dot-getLastBizDate.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/dot-inputColumnChecker.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/ExtractFunds.html</loc></url>
@@ -33,6 +38,7 @@
 <url><loc>https://fairtree.github.io/Fairlytics/reference/LineChartr.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/LineChartWrapper.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/PerformanceSummaryTable.html</loc></url>
+<url><loc>https://fairtree.github.io/Fairlytics/reference/PieChart.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/PortfolioModelTable.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/ProcessInstrumentMetaID.html</loc></url>
 <url><loc>https://fairtree.github.io/Fairlytics/reference/RelativeWeightBarChart.html</loc></url>
