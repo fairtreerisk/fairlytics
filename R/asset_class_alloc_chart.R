@@ -55,11 +55,10 @@ AssetClassAllocationTable <- function(df, x_col, y_col, value_col, chart_title,
     theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12.5),
           legend.position = "none") +
     theme(axis.text.y = element_text(hjust = 1, size = 12.0),
-          legend.position = "none",
-          plot.margin = margin(10,10,45,45)) +
+          legend.position = "none",) +
     xlab("") +
     ylab("") +
-    geom_text(aes(label = paste0(round(100 * .data[[value_col]], 0))), size = 3.5) +
+    geom_text(aes(label = paste0(round(100 * .data[[value_col]], 2))), size = 3.5) +
     ggtitle(chart_title) +
     theme(plot.title = element_text(size = 18))
 
