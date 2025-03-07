@@ -50,7 +50,13 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">WindowPanel</span><span class="op">(</span><span class="va">panel_layers</span>, <span class="va">title</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">WindowPanel</span><span class="op">(</span></span>
+<span>  <span class="va">panel_layers</span>,</span>
+<span>  <span class="va">title</span>,</span>
+<span>  <span class="va">window_position</span>,</span>
+<span>  width <span class="op">=</span> <span class="st">"auto"</span>,</span>
+<span>  height <span class="op">=</span> <span class="st">"auto"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -63,6 +69,18 @@
 
 <dt id="arg-title">title<a class="anchor" aria-label="anchor" href="#arg-title"></a></dt>
 <dd><p>(string) A title for the window panel, displayed at the top.</p></dd>
+
+
+<dt id="arg-window-position">window_position<a class="anchor" aria-label="anchor" href="#arg-window-position"></a></dt>
+<dd><p>(numeric vector) A numeric vector of length 4 specifying the top, right, bottom, and left positioning of the panel.</p></dd>
+
+
+<dt id="arg-width">width<a class="anchor" aria-label="anchor" href="#arg-width"></a></dt>
+<dd><p>(string, default = "auto") The width of the window panel. Defaults to "auto".</p></dd>
+
+
+<dt id="arg-height">height<a class="anchor" aria-label="anchor" href="#arg-height"></a></dt>
+<dd><p>(string, default = "auto") The height of the window panel. Defaults to "auto".</p></dd>
 
 </dl></div>
     <div class="section level2">

@@ -11,7 +11,7 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 ```{r echo=FALSE, include=FALSE}
 
 library(fairlytics)
-
+library(plotly)
 ```
 
 In this vignette well review and showcase some examples of the charts and visualization supported by `fairlytics`. The vignette helps with familiarizing the names of the chart functions for the user.
@@ -212,6 +212,204 @@ LineChartWrapper(
   chart_title = "Line Chart Highcharter)",
   plot_engine = "highcharter"
   )
+
+```
+
+## Bar Charts
+
+For bar charts `fairlytics` support two different plotting engines. You can use highcharter or ggplot2 as your plotting engine.
+
+Types of bar charts supported are 'group' and 'stack', this can be set via the `bar_type` parameter.
+
+To Sort the bars on chart you have to set the parameter `ordering_bars = TRUE` and then pick whether to sort in an ascending order by setting `ascending = TRUE`or `ascending = TRUE` for descending order.
+
+You can Flip the chart axis by setting `chart_flip = TRUE`.
+
+### Using the Bar Chart Wrapper
+
+```{r }
+
+library(ggplot2)
+library(highcharter)
+library(lubridate)
+
+test_df <- data.frame(
+    category = c("A", "B", "C"),
+    value = c(10, 20, 15),
+    group = c("X", "Y", "X")
+  )
+
+chart <- BarChart(test_df, 
+                  x_col = "category",
+                  y_col = "value",
+                  color_col = "group",
+                  bar_type = "stack",
+                  plot_engine = "ggplot2")
+
+ggplotly(chart)
+
+```
+
+#### Bar Type = 'group'
+```{r }
+
+library(highcharter)
+library(lubridate)
+
+library(tibble)
+
+test_data <- data.frame(
+  "Name" = rep(c("EQT 1", "EQT 2", "EQT 3", "EQT 4"), length.out = 9),
+  "Fund" = rep(c("Fund A", "Fund B", "Fund C"), length.out = 9),
+  "value" = runif(9, 0, 1)
+)
+
+chart <- BarChart(test_data, 
+                  x_col = "Fund",
+                  y_col = "value",
+                  color_col = "Name",
+                  bar_type = "group",
+                  plot_engine = "ggplot2")
+
+ggplotly(chart)
+
+```
+
+
+#### Bar Type = 'stack'
+```{r }
+
+library(highcharter)
+library(lubridate)
+
+library(tibble)
+
+test_data <- data.frame(
+  "Name" = rep(c("EQT 1", "EQT 2", "EQT 3", "EQT 4"), length.out = 9),
+  "Fund" = rep(c("Fund A", "Fund B", "Fund C"), length.out = 9),
+  "value" = runif(9, 0, 1)
+)
+
+chart <- BarChart(test_data, 
+                  x_col = "Fund",
+                  y_col = "value",
+                  color_col = "Name",
+                  bar_type = "stack",
+                  plot_engine = "ggplot2")
+
+ggplotly(chart)
+
+```
+
+
+### ggplot Bar Chart
+
+```{r }
+
+library(ggplot2)
+library(plotly)
+
+test_df <- data.frame(
+  category = c("A", "B", "C"),
+  values = c(0.3, 0.5, 0.2),
+  color = c("red", "green", "blue")
+)
+chart <- BarChart_ggplot(test_df, 
+                         x_col = "category",
+                         y_col = "values",
+                         color_col = "color",
+                          bar_type = "stack",
+                         chart_title = "Ordered Bar Chart", 
+                         show_bar_text = TRUE)
+
+ggplotly(chart)
+
+```
+
+### Highcharter Bar Chart
+
+```{r }
+
+library(highcharter)
+library(lubridate)
+
+data <- data.frame(
+  Date = seq.Date(from = Sys.Date() - 10, by = "day", length.out = 10),
+  Value = rnorm(10),
+  Group = rep(c("A", "B"), each = 5)
+  )
+
+BarCharter(test_df,
+           x_col = "category",
+           y_col = "values",
+           color_col = "color",
+           bar_type = "stack",
+           chart_title = "Ordered Bar Chart",
+           show_bar_text = TRUE)
+
+```
+
+## Area Chart
+
+```{r}
+
+library(ggplot2)
+library(plotly)
+
+test_data <- data.frame(
+  Date = seq.Date(from = Sys.Date() - 10, by = "day", length.out = 10),
+  Value = runif(10),
+  FillGroup = rep(c("Red", "Blue"), each = 5),
+  Group = rep(c("A", "B"), each = 5)
+)
+
+chart <- AreaChart(
+  df = test_data,
+  x_col = "Date",
+  y_col = "Value",
+  fill_col = "FillGroup",
+  group_col = "Group",
+  chart_title = "Interactive Area Chart"
+)
+
+ggplotly(chart)
+
+```
+
+## Pie Chart
+
+```{r}
+
+library(ggplot2)
+
+test_data <- data.frame(
+  category = c("A", "B", "C"),
+  values = c(0.3, 0.5, 0.2)
+)
+
+PieChart(test_data,
+         value_col = "values",
+         color_col = "category",
+         chart_title = "Example Pie Chart")
+
+```
+
+## Donut Chart
+
+```{r}
+
+library(plotly)
+
+test_df <- data.frame(
+  category = c("A", "B", "C"),
+  values = c(30, 50, 20)
+)
+
+DonutPlotly(test_df,
+            value_col = "values",
+            label_col = "category",
+            chart_title = "Example Donut Chart")
+
 
 ```
 
