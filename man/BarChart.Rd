@@ -9,7 +9,7 @@ BarChart(
   x_col,
   y_col,
   color_col,
-  bars_type = c("stack", "dodge"),
+  bar_type = c("stack", "group"),
   x_label = "",
   y_label = "",
   chart_title = NULL,
@@ -30,6 +30,9 @@ BarChart(
 
 \item{color_col}{A string specifying the column name to be used for color grouping.}
 
+\item{bar_type}{A character string specifying how bars should be positioned.
+Options are \code{"stack"} for stacked bars or \code{"group"} for grouped bars.}
+
 \item{x_label}{A string specifying the label for the x-axis.}
 
 \item{y_label}{A string specifying the label for the y-axis.}
@@ -48,9 +51,6 @@ Options are \code{"ggplot2"} (default) or \code{"highcharter"}.}
 \item{num_abv_grph_size}{A numeric value specifying the font size of numeric labels above bars.}
 
 \item{txt_space_abv_grh}{A numeric value specifying the space above the bars for text labels.}
-
-\item{position_type}{A character string specifying how bars should be positioned.
-Options are \code{"stack"} for stacked bars or \code{"dodge"} for grouped bars.}
 }
 \value{
 A ggplot or highcharter object representing the bar chart.

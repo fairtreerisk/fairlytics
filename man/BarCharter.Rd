@@ -9,7 +9,7 @@ BarCharter(
   x_col,
   y_col,
   color_col,
-  bars_type = c("stack", "group"),
+  bar_type = c("stack", "group"),
   x_label = "",
   y_label = "",
   order_bars = TRUE,
@@ -31,7 +31,7 @@ BarCharter(
 
 \item{color_col}{A string specifying the column name for grouping bars by color.}
 
-\item{bars_type}{A character string indicating the type of bars: either \code{"stack"} (default) or \code{"group"}.}
+\item{bar_type}{A character string indicating the type of bars: either \code{"stack"} (default) or \code{"group"}.}
 
 \item{x_label}{A string specifying the label for the x-axis (default is an empty string).}
 

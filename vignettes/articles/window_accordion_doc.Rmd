@@ -31,16 +31,17 @@ The following example demonstrates how to create an interactive accordion panel 
 
 ```{r results='asis'}
 
-mydata <- data.frame(
+test_data <- data.frame(
   group_value = rep(c("Group A", "Group B", "Group C"), each = 3),
   category = rep(c("Category 1", "Category 2", "Category 3"), times = 3),
   amount = c(10, 20, 15, 25, 35, 30, 40, 50, 45)
 )
 
 accordion_content <- AccordionPanel(
-  df = mydata,
+  df = test_data,
   value_col = "amount",
   grouping_col = "group_value",
+  underlying_bars_col = "category",
   chart_title = "Collapsible Bar Charts"
 )
 
