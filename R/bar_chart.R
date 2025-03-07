@@ -8,8 +8,8 @@
 #' @param x_col A string specifying the column name to be used for the x-axis.
 #' @param y_col A string specifying the column name to be used for the y-axis.
 #' @param color_col A string specifying the column name to be used for color grouping.
-#' @param position_type A character string specifying how bars should be positioned.
-#'        Options are `"stack"` for stacked bars or `"dodge"` for grouped bars.
+#' @param bar_type A character string specifying how bars should be positioned.
+#'        Options are `"stack"` for stacked bars or `"group"` for grouped bars.
 #' @param x_label A string specifying the label for the x-axis.
 #' @param y_label A string specifying the label for the y-axis.
 #' @param chart_title A string specifying the title of the chart.
@@ -38,7 +38,7 @@ BarChart <- function(df,
                      x_col,
                      y_col,
                      color_col,
-                     bars_type = c("stack", "dodge"),
+                     bar_type = c("stack", "group"),
                      x_label="",
                      y_label="",
                      chart_title = NULL,
@@ -49,7 +49,7 @@ BarChart <- function(df,
                      num_abv_grph_size = 4,
                      txt_space_abv_grh = 0.005){
 
-  bars_type <- match.arg(bars_type)  # Validate bars_type argument
+  bar_type <- match.arg(bar_type)  # Validate bar_type argument
 
   plot_engine <- match.arg(plot_engine)  # Validate plot engine argument
 
@@ -58,7 +58,7 @@ BarChart <- function(df,
                                           x_col = x_col,
                                           y_col = y_col,
                                           color_col = color_col,
-                                          bars_type = bars_type,
+                                          bar_type = bar_type,
                                           x_label = x_label,
                                           y_label =  y_label,
                                           chart_title = chart_title,
@@ -72,7 +72,7 @@ BarChart <- function(df,
                                          x_col = x_col,
                                          y_col = y_col,
                                          color_col = color_col,
-                                         bars_type = bars_type,
+                                         bar_type = bar_type,
                                          x_label = x_label,
                                          y_label =  y_label,
                                          chart_title = chart_title,

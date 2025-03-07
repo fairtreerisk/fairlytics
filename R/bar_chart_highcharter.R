@@ -7,7 +7,7 @@
 #' @param x_col A string specifying the column name for the x-axis.
 #' @param y_col A string specifying the column name for the y-axis.
 #' @param color_col A string specifying the column name for grouping bars by color.
-#' @param bars_type A character string indicating the type of bars: either `"stack"` (default) or `"group"`.
+#' @param bar_type A character string indicating the type of bars: either `"stack"` (default) or `"group"`.
 #' @param x_label A string specifying the label for the x-axis (default is an empty string).
 #' @param y_label A string specifying the label for the y-axis (default is an empty string).
 #' @param order_bars Logical, whether to order bars based on their y-values (default: TRUE).
@@ -28,7 +28,7 @@ BarCharter <- function(df,
                        x_col,
                        y_col,
                        color_col,
-                       bars_type = c("stack", "group"),
+                       bar_type = c("stack", "group"),
                        x_label="",
                        y_label="",
                        order_bars = TRUE,
@@ -42,9 +42,9 @@ BarCharter <- function(df,
 
   .inputColumnChecker(df = df, x_col, y_col, color_col)
 
-  bars_type <- match.arg(bars_type)  # Validate bars_type argument
+  bar_type <- match.arg(bar_type)  # Validate bar_type argument
 
-  stacking_option <- ifelse(bars_type == "stack", "normal", bars_type)
+  stacking_option <- ifelse(bar_type == "stack", "normal", bar_type)
 
   # Set chart type: column or bar
   chart_type <- ifelse(chart_flip, "bar", "column")
